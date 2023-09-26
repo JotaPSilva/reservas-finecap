@@ -5,11 +5,11 @@ from .models import Reserva
 from datetime import datetime
 
 
-def lista_reservas(empresa):
-    nome_da_empresa = empresa.GET.get("nome_da_empresa", "")
-    quitado = empresa.GET.get("quitado", "")
-    stand_valor = empresa.GET.get("stand_valor", "")
-    data_reserva = empresa.GET.get("data_reserva", "")
+def lista_reservas(request):
+    nome_da_empresa = request.GET.get("nome_da_empresa", "")
+    quitado = request.GET.get("quitado", "")
+    stand_valor = request.GET.get("stand_valor", "")
+    data_reserva = request.GET.get("data_reserva", "")
 
     reservas = Reserva.objects.all()
 
@@ -31,7 +31,7 @@ def lista_reservas(empresa):
             pass
 
     context = {"reservas": reservas}
-    return render(empresa, "lista_reservas.html", context)
+    return render(request, "lista_reservas.html", context)
 
 
 def criar_reserva(request):
