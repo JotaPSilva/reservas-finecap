@@ -12,11 +12,14 @@ class Stand(models.Model):
 class Reserva(models.Model):
     cnpj = models.CharField(max_length=100)
     quitado = models.BooleanField(default=False)
-
     nome = models.CharField(max_length=100)
     categoria = models.CharField(max_length=100)
+    data = models.DateField(auto_now_add=True)
 
     stand = models.OneToOneField(Stand, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Reserva da empresa {self.empresa}"
+
+    class Meta:
+        ordering = ["-data"]
