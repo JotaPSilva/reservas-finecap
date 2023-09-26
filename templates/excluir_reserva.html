@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Excluir Reserva</h1>
+<p>Você tem certeza de que deseja excluir a reserva da empresa {{ reserva.empresa }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'lista_reservas' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
